@@ -1,0 +1,1 @@
+In this website, i built it by using HTML and CSS only. The reason is i want to practice my knowledge, so i can get better quickly. My bad guys if it looks so simple and like AI generated. I only do the coding things, AI create the design for me. You guys can access it at here : https://fahmoi.netlify.app/
