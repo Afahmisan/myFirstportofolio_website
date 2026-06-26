@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang = "en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>My Portofolio</title>
+
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box; /*When we set the width 200 and padding, the padding will take the size inside the width 200 */
+		}
+
+		nav {
+			display: flex;
+			flex-direction: column;
+			gap: 16px;
+			align-items: center;
+			
+			padding: 20px;
+			background-color: #1a1a2e;
+			
+		}
+
+		.logo{
+			color: white;
+			font-size: 1.3rem;
+			font-weight: bold;
+		}
+
+		.nav-links{
+			list-style: none;
+			display: flex;
+			gap: 16px;
+		}
+
+		.nav-links a{
+			color: #aaa;
+			text-decoration: none;
+		}
+
+		.nav-links a:hover{
+			color:white;
+		}
+
+		section#hero{
+			background-color: #1a1a2e;
+			color: white;
+			min-height:  100vh;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			text-align: center;
+			padding: 40px;
+			
+		}
+
+		.hero-tag{
+			font-size: 1rem;
+			color: #aaa;
+			margin-bottom: 12px;
+		}
+
+		.hero-name{
+			font-size: clamp(2.5rem, 8vw, 3.5rem);
+			font-weight: bold;
+			margin-bottom: 12px;
+		}
+
+		.hero-role{
+			font-size: 1.3rem;
+			color: #a89cff;
+			margin-bottom: 20px;
+		}
+
+		.hero-desc{
+			font-size: 1rem;
+			color: #aaa;
+			max-width: 500px;
+			line-height: 1.5;
+			margin-bottom: 36px;
+		}
+
+		.hero-btn{
+			background-color: #6c63ff;
+			color: white;
+			padding: 14px 24px;
+			border-radius: 8px;
+			text-decoration: none;
+			font-weight: 600;
+			font-size: 1rem;
+			transition: background-color 0.2s;
+		}
+
+		.hero-btn:hover{
+			background-color: #5851e0;
+		}
+
+		#about {
+			background-color: #13121f;
+			padding: 100px 40px;
+		}
+
+		.about-container{
+			max-width: 900px;
+			margin: 0 auto;
+			display: flex;
+			flex-direction: column;
+			gap: 40px;
+			align-items: center;
+		}
+
+		.about-image{
+			font-size:  8rem;
+			max-width: 200px;
+			text-align: center;
+		}
+
+		.about-text {
+			color: white;
+		}
+
+		.section-label{
+			color: #a89cff;
+			font-size: 0.8rem;
+			font-weight: 600;
+			text-transform: uppercase;
+			letter-spacing: 0.15em;
+			margin-bottom: 8px;
+		}
+
+		.section-title{
+			font-size: 2rem;
+			font-weight: bold;
+			margin-bottom: 20px;
+			color: white;
+		}
+
+		.about-desc{
+			color: #aaa;
+			font-size: 1rem;
+			line-height: 1.7;
+			margin-bottom: 16px;
+		}
+
+		.about-badges {
+			display: flex;
+			gap: 12px;
+			flex-wrap: wrap;
+			margin-bottom: 16px;
+		}
+
+		.badge{
+			background-color: #1a1a2e;
+			border: 1px solid #2a2d3e;
+			color: #aaa;
+			padding: 8px 16px;
+			border-radius: 999px;
+			font-size: 0.85rem;
+		}
+
+		#skills{
+			background-color: #1a1a2e;
+			padding: 100px 40px;
+		}
+
+		.skills-container{
+			max-width: 900px;
+			margin: 0 auto;
+		}
+
+		.skill-card{
+			background-color: #12121f;
+			border: 1px solid #2a2d3e;
+			border-radius: 12px;
+			padding: 20px 24px;
+			transition: transform 0.2s, border-color 0.2s;
+		}
+
+		.skill-card:hover{
+			transform: translateY(-4px);
+			border-color: #6c63ff;
+		}
+
+		.skill-icon{
+			font-size: 2rem;
+			margin-bottom: 12px;
+		}
+
+		.skill-icon img{
+			width: 40px;
+			height: 40px;
+			object-fit: contain;
+		}
+
+		.skill-name {
+			color: white;
+			font-size: 1.05rem;
+			font-weight: 600;
+			margin-bottom: 8px;
+		}
+
+		.skill-desc{
+			color: #aaa;
+			font-size: 0.9rem;
+			line-height: 1.6;
+		}
+
+		#projects{
+			background-color: #13121f;
+			padding: 100px 40px;
+		}
+
+		.projects-container{
+			max-width: 900px;
+			margin: 0 auto;
+		}
+
+		.projects-card{
+			background-color: #1a1a2e;
+			border: 1px solid #2a2d3e;
+			border-radius: 12px;
+			overflow: hidden;
+			transition: transform 0.2s, border-color 0.2s;
+		}
+
+		.projects-card:hover{
+			transform: translateY(-4px);
+			border-color: #6c63ff;
+		}
+
+		.projects-thumb {
+			background-color: #1e1b4b;
+			height: 160px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-size: 3rem;
+		}
+
+		.projects-info{
+			padding:20px;
+		}
+
+		.project-tags{
+			display: flex;
+			gap: 8px;
+			margin-bottom: 12px;
+		}
+
+		.tag{
+			background-color: rgba(108, 99, 255, 0.15);
+			color: #a89cff;
+			padding: 4px 10px;
+			border-radius: 4px;
+			font-size: 0.75rem;
+			font-weight: 600;
+		}
+
+		.project-title{
+			color: white;
+			font-size: 1.05rem;
+			font-weight: 600;
+			margin-bottom: 8px;
+		}
+
+		
+		.project-desc{
+			color: #aaa;
+			font-size: 0.9rem;
+			line-height: 1.6;
+			margin-bottom: 16px;
+		}
+
+		.project-link{
+			color: #a89cff;
+			text-decoration: none;
+			font-size: 0.9rem;
+			font-weight: 600;
+			transition: color 0.2s;
+		}
+
+		.project-link:hover{
+			color: white;
+		}
+
+		.project-placeholder{
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			gap: 8px;
+			min-height: 260px;
+			border-style: dashed;
+		}
+
+		.placeholder-icon{
+			font-size: 2rem;
+			color: #2a2d3e;
+		}
+
+		.placeholder-text{
+			color: #aaa;
+			font-size: 0.9rem;
+		}
+
+		.placeholder-hint{
+			color: #2a2d3e;
+			font-size: 0.78rem;
+		}
+
+		#contact{
+			background-color: #1a1a2e;
+			padding: 100px 40px;
+			text-align: center;
+		}
+
+		.contact-container{
+			max-width: 600px;
+			margin: 0 auto;
+		}
+
+		.contact-desc{
+			color: #aaa;
+			font-size: 1rem;
+			line-height: 1.7;
+			margin-bottom: 40px;
+		}
+
+		.contact-links{
+			display: flex;
+			justify-content: center;
+			gap: 16px;
+			flex-wrap: wrap;
+		}
+
+		.contact-link{
+			display: flex;
+			align-items: center;
+			gap: 8px;
+			color: #aaa;
+			text-decoration: none;
+			font-size: 0.9rem;
+			padding: 12px 20px;
+			border: 1px solid #2a2d3e;
+			border-radius: 8px;
+			transition: color 0.2s, border-color 0.2s;
+		}
+
+		.contact-link:hover{
+			color: white;
+			border-color: #a89cff;
+		}
+
+		footer{
+			background-color: #0d0d1a;
+			padding: 40px;
+			text-align: center;
+			border-top: 1px solid #2a2d3e;
+		}
+
+		.footer-container{
+			max-width: 600px;
+			margin: 0 auto;
+			display: flex;
+			flex-direction: column;
+			gap: 8px;
+		}
+
+		.footer-name{
+			color: #a89cff;
+			font-weight: 600;
+			font-size: 1rem;
+		}
+
+		.footer-text{
+			color: #555;
+			font-size: 0.85rem;
+		}
+
+		.footer-credit{
+			color: #555;
+			font-size: : 0.8rem;
+		}
+
+		.skills-grid, .projects-grid{
+			display: grid;
+			grid-template-columns: 1fr;
+			gap: 24px;
+		}
+
+		@media(min-width: 768px){
+			nav{
+				flex-direction: row;
+				justify-content: space-between;
+				padding: 20px 40px;
+			}
+
+			nav-links{
+				gap: 32px;
+			}
+			.about-container{
+				flex-direction: row;
+				gap: 100px;
+			}
+
+			.skills-grid, .projects-grid{
+				grid-template-columns: repeat(3, 1fr);
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<nav>
+		<div class ="logo"> MyPortofolio</div>
+
+		<ul class = "nav-links">
+			<li><a href="#about">About</a></li>
+			<li><a href="#skills">Skills</a></li>
+			<li><a href="#projects">Projects</a></li>
+			<li><a href="#contact">Contact</a></li>
+		</ul>
+	</nav>
+	<section id="hero">
+		<p class="hero-tag"> Helloo, I'm</p>
+		<h1 class="hero-name">Asfia</h1>
+		<p class="hero-role">Front-end Developer</p>
+		<p class="hero-desc">
+			I am currently learning how to build a beautiful websites from scratch. I promise to myself to be a good developer after 2 monts
+		</p>
+		<a href="#projects" class ="hero-btn">See My Projects</a>
+	</section>
+
+	<section id="about">
+		<div class="about-container">
+			<div class="about-image">
+				 🧑‍💻
+			</div>
+			<div class="about-text">
+				<p class="section-label"> Who am I?</p>
+				<h2 class="section-title"> About Me</h2>
+				<p class="about-desc">
+					 Hi! I'm Asfia, a self-taught frontend developer from Indonesia.
+        I'm passionate about turning ideas into real websites that look
+        great and feel smooth to use.
+        		</p>
+        		<p class="about-desc">
+        			I started learning HTML & CSS from scratch and every day I'm
+        getting better. My goal is to become a confident full-stack
+        developer within the year.
+        		</p>
+
+        		<div class="about-badges">
+        			<span class="badge">📍 Indonesia</span>
+        			<span class="badge">🌱 Self-taught</span>
+        			<span class="badge">💻 2 months in</span>
+        		</div>
+			</div>
+		</div>
+		<div id="github-grid">
+			<p>halo</p>
+		</div>
+	</section>
+
+	<section id="skills">
+		<div class="skills-container">
+
+			<p class="section-label">What I know</p>
+			<h2 class="section-title">My Skills</h2>
+			<div class="skills-grid">
+				
+				<div class="skill-card">
+			        <div class="skill-icon">
+			        	<img src="HTML.png" alt="HTML">
+			        </div>
+			        <h3 class="skill-name">HTML</h3>
+			        <p class="skill-desc">Building the structure and skeleton of web pages.</p>
+			      </div>
+
+			      <div class="skill-card">
+			        <div class="skill-icon">
+			        	<img src="CSS.png" alt="CSS">
+			        </div>
+			        <h3 class="skill-name">CSS</h3>
+			        <p class="skill-desc">Styling layouts, colors, and making pages look beautiful.</p>
+			      </div>
+
+			      <div class="skill-card">
+			        <div class="skill-icon">
+			        	<img src="JavaScript.png" alt="JavaScript">
+			        </div>
+			        <h3 class="skill-name">JavaScript</h3>
+			        <p class="skill-desc">Currently learning — adding interactivity to pages.</p>
+			      </div>
+
+			      <div class="skill-card">
+			        <div class="skill-icon">📱</div>
+			        <h3 class="skill-name">Responsive Design</h3>
+			        <p class="skill-desc">Making websites look great on all screen sizes.</p>
+			      </div>
+
+			      <div class="skill-card">
+			        <div class="skill-icon">
+			        	<img src="Github.png" alt="Github">
+			        </div>
+			        <h3 class="skill-name">Git & GitHub</h3>
+			        <p class="skill-desc">Saving and sharing my code with version control.</p>
+			      </div>
+
+			      <div class="skill-card">
+			        <div class="skill-icon">
+			        	<img src="ComingSoon.png" alt="ComingSoon Icon">
+			        </div>
+			        <h3 class="skill-name">Coming Soon</h3>
+			        <p class="skill-desc">Next skill I'm planning to learn!</p>
+			      </div>
+
+			</div>
+		</div>
+	</section>
+	<section id="projects">
+		<div class="projects-container">
+			<p class="section-label">What I've build</p>
+			<h2 class="section-title">My Projects</h2>
+
+			<div class="projects-grid">
+				<div class="projects-card">
+					<div class="projects-thumb">🔜</div>
+					<div class="projects-info">
+						<div class="project-tags">
+				            <span class="tag">HTML</span>
+				            <span class="tag">CSS</span>
+				        </div>
+						<h3 class="project-title">Personal Portofolio</h3>
+						<p class="project-desc">
+							My very first project - a personal profile page built from scratch using HTML and CSS.
+						</p>
+						<a href="#" class="project-link">View Project</a>
+					</div>
+				</div>
+
+				<div class="projects-card project-placeholder">
+					<div class="placeholder-icon">+</div>
+					<p class="placeholder-text">Next Project, coming soon</p>
+					<p class="placeholder-hint"> Weather App (JS) </p>
+				</div>
+				<div class="projects-card project-placeholder">
+					<div class="placeholder-icon">+</div>
+					<p class="placeholder-text">Future Projects</p>
+					<p class="placeholder-hint">To-Do List</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section id="contact">
+		<div class="contact-container">
+			<p class="section-label"> Say hello</p>
+			<h2 class="section-title"> Get in Touch</h2>
+			<p class="contact-desc"> I'm always open to connecting with other developers or
+      hearing about new opportunities. Feel free to reach out!</p>
+
+      		<div class="contact-links">
+      			<a href="mailto:asfiafahmisan404@gmail.com" class="contact-link"> 📧 asfiafahmisan404@gmail.com</a>
+      			<a href="https://github.com/Afahmisan" class="contact-link" target="_blank"> Github</a>
+      			<a href="https://www.linkedin.com/in/asfia-fahmisan-438221281" class="contact-link" target="_blank">LinkedIn</a>
+      		</div>
+		</div>
+	</section>
+
+</body>
+
+<footer>
+	<div class="footer-container">
+		<p class="footer-name"> Asfia Fahmisan</p>
+		<p class="footer-text"> Built from scratch with HTML & CSS . 2025 </p>
+		<p class="footer-credit"> Designed & Code by me - my first website </p>
+	</div>
+</footer>
+
+</html>
